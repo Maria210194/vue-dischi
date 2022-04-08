@@ -1,0 +1,17 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import '~@fontsource/montserrat/index.css';
+
+@import '~@fontsource/montserrat/700.css';
+
+@import "@/style/variables";
+
+body {
+    font-family: $main-font;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: $font-color;
+    margin-top: 60px;
+    background-color: $bg-color;
+}
