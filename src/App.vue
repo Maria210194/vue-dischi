@@ -1,17 +1,24 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HeaderComponent />
+    <DiscList :url="apiUrl" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
+import DiscList from "./components/DiscList.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    HeaderComponent,
+    DiscList,
+  },
+  data() {
+    return {
+      apiUrl: "https://flynn.boolean.careers/exercises/api/array/music",
+    };
   },
 };
 </script>
@@ -19,4 +26,10 @@ export default {
 <style lang="scss">
 @import "@/style/general";
 @import "@/style/variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 </style>
