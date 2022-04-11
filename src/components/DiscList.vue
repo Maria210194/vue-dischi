@@ -1,6 +1,9 @@
 <template>
   <div class="container mx-5">
-    <div v-if="discs.length > 0" class="row">
+    <div class="col-12">
+      <SearchComponent @search="filterByName" />
+    </div>
+    <div v-if="!isLoading" class="row">
       <DiscItem v-for="item in discs" :key="item.author" :disc="item" />
     </div>
     <div v-else>
@@ -13,6 +16,7 @@
 import axios from "axios";
 import DiscItem from "@/components/DiscItem.vue";
 import LoadingComponent from "@/components/LoadingComponent.vue";
+import SearchComponent from "@/components/SearchComponent.vue";
 
 export default {
   name: "DiscList",
@@ -24,9 +28,15 @@ export default {
   props: {
     url: String,
   },
+  computed: {
+    isLoading() {
+      return this.discs.length === 0;
+    },
+  },
   components: {
     DiscItem,
     LoadingComponent,
+    SearchComponent,
   },
 
   mounted() {
@@ -46,6 +56,9 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    filterByName(searchText) {
+      console.log(searchText);
     },
   },
 };
